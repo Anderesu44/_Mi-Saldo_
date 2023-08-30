@@ -1,0 +1,646 @@
+#:import MDCard kivymd.uix.card
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+<Card@MDCard>
+    radius: dp(10)
+    padding: dp(10)
+    md_bg_color: [0,0.33,0.33,1]
+    line_color: 0,0,0,0.9
+    orientation: 'vertical'
+    text: ''
+    sub_text: ''
+    ripple_behavior: True
+    on_release:
+        app.root.transition = SlideTransition(direction='left')
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            color: [0,0,0,1]
+            text: root.text
+            halign: 'center'
+            pos_hint: {'center_y': 0.5}
+        MDLabel:
+            color: [0,0,0,1]
+            text: root.sub_text
+            halign: 'center'
+            pos_hint: {'center_y': 0.5}
+<UI>:
+    MDScreen:
+        name: 'main'
+        md_bg_color: [0.33,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: .97, .19
+                radius: '10dp'
+                padding: '20dp'
+                line_color: 0,1,1,1
+                pos_hint: {'center_x': 0.5,'center_y': 1.0}
+                MDLabel:
+                    text: '*Mi saldo#'
+                    text_color: '#00FFFF'
+                    halign: 'center'
+                    pos_hint: {'center_y': 0.5}
+            MDGridLayout:
+                spacing: dp(10)
+                cols: 3
+                size_hint: 1, .8
+                padding: ['10dp','10dp','10dp','10dp']
+                Card:
+                    text: '*222#'
+                    sub_text: 'consultar saldo'
+                    on_release:
+                        app.n1()
+                Card:
+                    text: '*222#'
+                    sub_text: 'RECARGAR'
+                    on_release:
+                        app.root.current = 'Screen_0'
+                Card:
+                    text: '*222#'
+                    sub_text: 'Consultar Bono'
+                    on_release:
+                        app.n2()
+                Card:
+                    text: '*234#'
+                    sub_text: 'transferir saldo'
+                    on_release:
+                        app.root.current = 'Screen_1'
+                Card:
+                    text: '*234#'
+                    sub_text: 'cambio de clave'
+                    on_release:
+                        app.root.current = 'Screen_2'
+                Card:
+                    text: '*234#'
+                    sub_text: 'Adelanta saldo'
+                    on_release:app.n5()
+                Card:
+                    text: '*133#'
+                    sub_text: 'Tarifa por consumo'
+                    on_release:
+                        app.n6()
+                Card:
+                    text: '*133#'
+                    sub_text: 'planes combinados'
+                    on_release:
+                        app.root.current = 'Screen_5'
+                Card:
+                    text: '*133#'
+                    sub_text: 'Bolsa de mansajeria'
+                    on_release: app.n12()
+                Card:
+                    text: '*133#'
+                    sub_text: 'planes de voz'
+                    on_release:
+                        app.root.current = 'Screen_7'
+                Card:
+                    text: '*133#'
+                    sub_text: 'Planes de mensages'
+                    on_release:
+                        app.root.current = 'Screen_8'
+                Card:
+                    text: '*133#'
+                    sub_text: 'Plan de amigos'
+                    on_release:
+                        app.root.current = 'Screen_9'
+    MDScreen:
+        name: 'Screen_0'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5,'center_y': 1.0}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Mi Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'Recargar'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                size_hint: 1, .2
+                MDTextField:
+                    id: Code
+                    hint_text: 'CODIGO'
+                    icon_right: 'key-variant'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+            MDBoxLayout:
+                size_hint: 1, .4
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, .2
+                spacing: dp(20)
+                padding: dp(50)
+                MDFillRoundFlatButton:
+                    id: bt_0
+                    color: '#00FFFF'
+                    text: 'Recargar'
+                    pos_hint: {'center_x': 0.5,'top': 0.5}
+                    on_release: app.n10()
+    MDScreen:
+        name: 'Screen_1'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'Transferir Saldo'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: 1,0.5
+                MDTextField:
+                    id: Num
+                    hint_text: 'Número'
+                    icon_right: 'account'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+                MDTextField:
+                    id: Monto
+                    hint_text: 'Monto'
+                    icon_right: 'account'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+                MDTextField:
+                    id: Key
+                    hint_text: 'Clave de tranferencia'
+                    icon_right: 'key-variant'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+                MDLabel:
+                    id: info_3
+                    text: ""
+                    color: '#FF0F0F'
+                MDLabel:
+                    text: "solo se pueden realizar 3 transferncias diarias y se le cobrara un importe de \"5cup\" por cada transferencia"
+                    color: '#0F0FF0'
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, .3
+                spacing: dp(20)
+                padding: dp(50)
+                MDFillRoundFlatButton:
+                    id: bt_1
+                    color: '#00FFFF'
+                    text: 'Enviar'
+                    pos_hint: {'center_x': 0.5,'top': 0.5}
+                    on_release: app.n3()
+    MDScreen:
+        name: 'Screen_2'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'Cambiar clave'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: 1,0.5
+                MDTextField:
+                    id: AKey
+                    hint_text: 'Clave actual'
+                    icon_right: 'key-variant'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+                MDLabel:
+                    id: info_4_1
+                    text: 'La clave por defecto es 1234'
+                    color: '#FFFFFF'
+                MDTextField:
+                    id: NKey
+                    hint_text: 'Clave nueva'
+                    icon_right: 'key-variant'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+                MDLabel:
+                    id: info_4_2
+                    text: 'solo caracteres numericos'
+                    color: '#FFFFFF'
+                MDTextField:
+                    id: CKey
+                    hint_text: 'Confirme la clave nueva'
+                    icon_right: 'key-variant'
+                    font_size: dp(20)
+                    icon_right_color: '#00FFFF'
+                    pos_hint: {'center_x': 0.5}
+                MDLabel:
+                    id: info_4_3
+                    text: 'escriba denuevo la clave para confirmar que no se equivoco'
+                    color: '#FFFFFF'
+                MDLabel:
+                    text: ""
+                    color: '#0F0FF0'
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, .3
+                spacing: dp(20)
+                padding: dp(50)
+                MDFillRoundFlatButton:
+                    id: bt_1
+                    color: '#00FFFF'
+                    text: 'Enviar'
+                    pos_hint: {'center_x': 0.5,'top': 0.5}
+                    on_release: app.n4()
+    MDScreen:
+        name: 'Screen_3'
+        md_bg_color: [1,0,0,1]
+    MDScreen:
+        name: 'Screen_4'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'tarifa por consumo'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDCard:
+                size_hint: 1, .4
+                line_color: 0,1,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                MDLabel:
+                    text: 'La tarifa por consumo viene desactivada por defecto, si la activa su dispositivo se conectara automaticamente a internet en cuanto active los datos siempre y cuando tenga saldo, La tarifa por consumo descuenta de su saldo xcup x mb en redes nacionales y xxcup x mb en rede internasionales, solo se empezara a desconter del saldo una vez usted aya agotado su plan de datos'
+                    halign: 'center'
+                    pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, .2
+                MDCard:
+                    line_color: 0,1,1,1
+                    radius: dp(100)
+                    padding: dp(20)
+                    spacing: dp(15)
+                    on_release: app.n6(value=0)
+                    MDLabel:
+                        text: "Activar"
+                        color: 0,1,1,1
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                MDCard:
+                    line_color: 0,1,1,1
+                    radius: dp(100)
+                    padding: dp(20)
+                    spacing: dp(15)
+                    on_release: app.n6(value=1)
+                    MDLabel:
+                        text: "Deactivar"
+                        color: 0,1,1,1
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+    MDScreen:
+        name: 'Screen_5'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5,'center_y': 1.0}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Mi Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'planes conbinados'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                size_hint: 1, .02
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: .8, .4
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                Card:
+                    text: '$110 CUP'
+                    sub_text: '600MB + 800MB solo LTE \n+ 300MB nacionales + 15min voz + 20SMS'
+                    on_release: app.n7(value=0)
+                Card:
+                    text: '$250 CUP'
+                    sub_text: '1.5GB + 2GB solo LTE \n+ 300MB nacionales + 35min voz + 40SMS'
+                    on_release: app.n7(value=1)
+                Card:
+                    text: '$500 CUP'
+                    sub_text: '3.5GB + 4.5GB solo LTE \n+ 300MB nacionales + 75min voz + 80SMS'
+                    on_release: app.n7(value=2)
+            MDBoxLayout:
+                size_hint: 1, .18
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, .15
+                MDBoxLayout:
+                Card:
+                    radius: dp(50)
+                    text: '*222#'
+                    sub_text: 'consultar saldo'
+                    on_release:
+                        app.n1()
+                MDBoxLayout:
+                    size_hint: 1, .2
+            MDBoxLayout:
+                size_hint: 1, .05
+    MDScreen:
+        name: 'Screen_6'
+        md_bg_color: [1,1,0,1]
+    MDScreen:
+        name: 'Screen_7'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5,'center_y': 1.0}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Mi Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'planes conbinados'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                size_hint: 1, .02
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: .8, .58
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                Card:
+                    text: '$37.5 CUP'
+                    sub_text: '5 min (7.5 por min)'
+                    on_release: app.n8(value=0)
+                Card:
+                    text: '$72.5 CUP'
+                    sub_text: '10 min (7.25 por min)'
+                    on_release: app.n8(value=1)
+                Card:
+                    text: '$105 CUP'
+                    sub_text: '15 min (7 por min)'
+                    on_release: app.n8(value=2)
+                Card:
+                    text: '$162.5 CUP'
+                    sub_text: '25 min (6.5 por min)'
+                    on_release: app.n8(value=3)
+                Card:
+                    text: '$250 CUP'
+                    sub_text: '40 min (6.25 por min)'
+                    on_release: app.n8(value=4)
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, .05
+                MDBoxLayout:
+                MDCard:
+                    radius: dp(50)
+                    md_bg_color: [1,1,1,1]
+                    on_release:
+                        app.n8(value=5)
+                    MDLabel:
+                        text: "consultar"
+                        halign: 'center'
+                        color: 0,0,0,1
+                MDBoxLayout:
+                    size_hint: 1, .2
+            MDBoxLayout:
+                size_hint: 1, .05
+    MDScreen:
+        name: 'Screen_8'
+        md_bg_color: [0,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5,'center_y': 1.0}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Mi Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'planes conbinados'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                size_hint: 1, .02
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: .8, .58
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                Card:
+                    text: '$15 CUP'
+                    sub_text: '20 SMS (0.75 por SMS)'
+                    on_release: app.n9(value=0)
+                Card:
+                    text: '$30 CUP'
+                    sub_text: '50 SMS (0.6 por SMS)'
+                    on_release: app.n9(value=1)
+                Card:
+                    text: '$50 CUP'
+                    sub_text: '90 SMS (0.55 por SMS)'
+                    on_release: app.n9(value=2)
+                Card:
+                    text: '$60 CUP'
+                    sub_text: '120 SMS ($0.5 por SMS)'
+                    on_release: app.n9(value=3)
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, .05
+                MDBoxLayout:
+                MDCard:
+                    radius: dp(50)
+                    md_bg_color: [1,1,1,1]
+                    on_release:
+                        app.n9(value=4)
+                    MDLabel:
+                        text: "consultar"
+                        halign: 'center'
+                        color: 0,0,0,1
+                MDBoxLayout:
+                    size_hint: 1, .2
+            MDBoxLayout:
+                size_hint: 1, .05
+    MDScreen:
+        name: 'Screen_9'
+        md_bg_color: [0.33,0.33,0.33,1]
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(10)
+            MDBoxLayout:
+                size_hint: 1, 0.01
+            MDCard:
+                size_hint: 0.95, 0.19
+                pos_hint: {'center_x': 0.5,'center_y': 1.0}
+                line_color: 1,0,1,1
+                radius: dp(20)
+                padding: dp(20)
+                spacing: dp(15)
+                on_release:
+                    root.transition = SlideTransition(direction='right')
+                    root.current = 'main'
+                    root.transition = SlideTransition(direction='left')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text:'*Mi Saldo#'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDLabel:
+                        text: 'planes amigos'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+            MDBoxLayout:
+                size_hint: 1, .02
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: .8, .58
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                Card:
+                    text: 'Estado'
+                    sub_text: 'consulta el estado del plan'
+                    on_release: app.n11(value=0)
+                Card:
+                    text: 'Activar'
+                    sub_text: 'Activa el plan'
+                    on_release: app.n11(value=1)
+                Card:
+                    text: 'Desactivar'
+                    sub_text: 'Desactiva el Plan'
+                    on_release: app.n11(value=2)
+                Card:
+                    text: 'agrega amigos'
+                    sub_text: 'Agrega el numero de un amigo'
+                    on_release: app.n11(value=4)
+                Card:
+                    text: 'eliminar amigos'
+                    sub_text: 'Elimina el numero de un amigo'
+                    on_release: app.n11(value=5)
+                Card:
+                    text: 'lista de amigos'
+                    sub_text: 'Consulta tu lista de numeros amigos'
+                    on_release: app.n11(value=6)
+            MDBoxLayout:
+                size_hint: 1, .1
